@@ -1,0 +1,24 @@
+[package]
+name = "jsonrpc"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[[bin]]
+name = "jsonrpc"
+path = "src/main.rs"
+
+[dependencies]
+bin-common = { path = "../../bin-common" }
+entities = { path = "../../entities" }
+migration = { path = "../../migration" }
+anyhow = { workspace = true }
+axum = { workspace = true }
+sea-orm = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+tokio = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }

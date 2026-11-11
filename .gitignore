@@ -1,0 +1,4 @@
+/target
+.env
+.tdlib/
+.tdlib-files/

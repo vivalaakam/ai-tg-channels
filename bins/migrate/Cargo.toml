@@ -1,0 +1,17 @@
+[package]
+name = "migrate"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[[bin]]
+name = "migrate"
+path = "src/main.rs"
+
+[dependencies]
+bin-common = { path = "../../bin-common" }
+migration = { path = "../../migration" }
+sea-orm = { workspace = true }
+sea-orm-migration = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
