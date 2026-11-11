@@ -525,7 +525,7 @@ checksum = "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
 
 [[package]]
 name = "common"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dotenvy",
  "tracing",
@@ -727,7 +727,7 @@ dependencies = [
 
 [[package]]
 name = "entities"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "sea-orm",
@@ -796,7 +796,7 @@ checksum = "da7c62ceae207dd37ea5b845da6a0696c799f85e97da1ab5b7910be3c1c80223"
 
 [[package]]
 name = "feed"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1383,7 +1383,7 @@ dependencies = [
 
 [[package]]
 name = "jsonrpc"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -1551,7 +1551,7 @@ dependencies = [
 
 [[package]]
 name = "migrate"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "common",
  "migration",
@@ -1563,7 +1563,7 @@ dependencies = [
 
 [[package]]
 name = "migration"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-std",
  "async-trait",
@@ -2274,7 +2274,7 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "scrapper"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
