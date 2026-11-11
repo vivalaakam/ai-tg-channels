@@ -301,11 +301,16 @@ async fn main() -> anyhow::Result<()> {
     let path = tdjson_path()?;
     let td = TdClient::start(&path)?;
 
-    let Some(root) = common::workspace_root() else {
-        anyhow::bail!("cannot determine workspace root");
-    };
-    let td_dir = root.join(".tdlib");
-    let files_dir = root.join(".tdlib-files");
+    // В docker каталоги задаются через TDLIB_DATA_DIR/TDLIB_FILES_DIR,
+    // локально по умолчанию — корень репозитория (+/.tdlib, +/.tdlib-files).
+    let td_dir = optional("TDLIB_DATA_DIR")
+        .map(std::path::PathBuf::from)
+        .or_else(|| common::workspace_root().map(|r| r.join(".tdlib")))
+        .context("cannot determine tdlib data dir")?;
+    let files_dir = optional("TDLIB_FILES_DIR")
+        .map(std::path::PathBuf::from)
+        .or_else(|| common::workspace_root().map(|r| r.join(".tdlib-files")))
+        .context("cannot determine tdlib files dir")?;
     std::fs::create_dir_all(&td_dir)?;
     std::fs::create_dir_all(&files_dir)?;
 

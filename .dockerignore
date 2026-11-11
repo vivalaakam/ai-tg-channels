@@ -1,0 +1,6 @@
+target
+.git
+.tdlib
+.tdlib-files
+.env
+README.md
