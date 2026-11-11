@@ -9,9 +9,9 @@ name = "scrapper"
 path = "src/main.rs"
 
 [dependencies]
-bin-common = { path = "../../bin-common" }
-entities = { path = "../../entities" }
-migration = { path = "../../migration" }
+common = { path = "../../crates/common" }
+entities = { path = "../../crates/entities" }
+migration = { path = "../../crates/migration" }
 anyhow = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }

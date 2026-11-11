@@ -1,6 +1,6 @@
 //! HTTP-клиенты эмбеддингов и LLM (аналог feed/src/embeddings.ts и llm.ts).
 use anyhow::Context;
-use bin_common::{optional, require};
+use common::{optional, require};
 use entities::{app_config, prompt};
 use sea_orm::{DatabaseConnection, EntityTrait};
 use serde_json::{Value, json};

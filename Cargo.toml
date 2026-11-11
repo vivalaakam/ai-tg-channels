@@ -1,5 +1,13 @@
 [workspace]
-members = ["migration", "entities", "bin-common", "bins/scrapper", "bins/feed", "bins/jsonrpc", "bins/migrate"]
+members = [
+    "crates/migration",
+    "crates/entities",
+    "crates/common",
+    "apps/scrapper",
+    "apps/feed",
+    "apps/jsonrpc",
+    "apps/migrate",
+]
 resolver = "2"
 
 [workspace.package]

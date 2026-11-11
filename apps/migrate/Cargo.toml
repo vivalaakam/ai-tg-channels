@@ -9,8 +9,8 @@ name = "migrate"
 path = "src/main.rs"
 
 [dependencies]
-bin-common = { path = "../../bin-common" }
-migration = { path = "../../migration" }
+common = { path = "../../crates/common" }
+migration = { path = "../../crates/migration" }
 sea-orm = { workspace = true }
 sea-orm-migration = { workspace = true }
 tokio = { workspace = true }

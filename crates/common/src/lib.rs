@@ -2,21 +2,24 @@ use std::path::PathBuf;
 
 use dotenvy::dotenv;
 
-/// Загружает `.env` из корня репозитория (два уровня вверх от CARGO_MANIFEST_DIR
+/// Загружает `.env` из корня репозитория (три уровня вверх от CARGO_MANIFEST_DIR
 /// в dev-режиме, либо из cwd) и значения переменных окружения.
 ///
 /// Переменные берутся только из окружения/`.env` — никогда из CLI-аргументов.
 pub fn load_env() {
-    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let default = PathBuf::from(".");
-    let root = manifest
-        .parent()
-        .and_then(|p| p.parent())
-        .unwrap_or(&default)
-        .to_path_buf();
     dotenv().ok();
-    let _ = dotenvy::from_path_override(root.join(".env"));
-    let _ = dotenvy::from_path(root.join(".env"));
+    if let Some(root) = workspace_root() {
+        let _ = dotenvy::from_path_override(root.join(".env"));
+        let _ = dotenvy::from_path(root.join(".env"));
+    }
+}
+
+/// Корень репозитория: три уровня вверх от CARGO_MANIFEST_DIR (даже если
+/// крейт живёт в crates/<name> — workspace-корень неизменен).
+pub fn workspace_root() -> Option<PathBuf> {
+    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let dir = manifest.parent()?.parent()?.parent()?.to_path_buf();
+    Some(dir)
 }
 
 pub fn require(name: &str) -> String {

@@ -6,12 +6,13 @@ Rust-конвертация проекта `ai-tg-channels`: сбор сообщ
 
 ## Структура
 
-- `migration/` — SeaORM-миграции (схема повторяет TS-версию)
-- `entities/` — SeaORM-сущности (channels, messages, feed, feed_messages, app_config, prompts)
-- `bins/scrapper` — TDLib-клиент: sync непрочитанных + live-обновления
-- `bins/feed` — процессор ленты: эмбеддинги, нормализация/дедуп через LLM
-- `bins/jsonrpc` — axum HTTP, JSON-RPC 2.0 + OpenRPC-спека
-- `bins/migrate` — CLI для применения миграций
+- `crates/migration` — SeaORM-миграции (схема повторяет TS-версию)
+- `crates/entities` — SeaORM-сущности (channels, messages, feed, feed_messages, app_config, prompts)
+- `crates/common` — env-загрузка, workspace-корень, tracing
+- `apps/scrapper` — TDLib-клиент: sync непрочитанных + live-обновления
+- `apps/feed` — процессор ленты: эмбеддинги, нормализация/дедуп через LLM
+- `apps/jsonrpc` — axum HTTP, JSON-RPC 2.0 + OpenRPC-спека
+- `apps/migrate` — CLI для применения миграций
 
 ## Запуск
 

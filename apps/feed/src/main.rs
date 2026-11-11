@@ -3,7 +3,7 @@ mod feed_repo;
 mod llm;
 
 use anyhow::Context;
-use bin_common::{init_tracing, load_env};
+use common::{init_tracing, load_env};
 use entities::message;
 use migration::MigratorTrait;
 use sea_orm::{

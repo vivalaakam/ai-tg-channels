@@ -1,4 +1,4 @@
-use bin_common::{init_tracing, load_env, require};
+use common::{init_tracing, load_env, require};
 use migration::{Migrator, MigratorTrait};
 use sea_orm::Database;
 

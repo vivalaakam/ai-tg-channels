@@ -11,7 +11,7 @@ use axum::Router;
 use axum::extract::State;
 use axum::http::header;
 use axum::response::{Html, IntoResponse, Response};
-use bin_common::{init_tracing, load_env, optional};
+use common::{init_tracing, load_env, optional};
 use methods::{find, methods, validate_params};
 use migration::{Migrator, MigratorTrait};
 use sea_orm::{ConnectOptions, Database, DatabaseConnection};

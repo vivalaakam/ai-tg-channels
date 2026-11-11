@@ -1,11 +1,10 @@
 [package]
-name = "bin-common"
+name = "common"
 version.workspace = true
 edition.workspace = true
 publish = false
 
 [lib]
-name = "bin_common"
 path = "src/lib.rs"
 
 [dependencies]

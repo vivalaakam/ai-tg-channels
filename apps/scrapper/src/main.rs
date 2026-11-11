@@ -5,7 +5,7 @@ mod td;
 use std::time::Duration;
 
 use anyhow::Context;
-use bin_common::{init_tracing, load_env, optional, require, require_i64};
+use common::{init_tracing, load_env, optional, require, require_i64};
 use migration::{Migrator, MigratorTrait};
 use sea_orm::{Database, DatabaseConnection};
 use serde_json::{Value, json};
@@ -30,16 +30,6 @@ fn tdjson_path() -> anyhow::Result<String> {
         }
     }
     anyhow::bail!("libtdjson not found. Install TDLib (brew install tdlib) or set TDJSON_PATH.")
-}
-
-fn workspace_dir(name: &str) -> std::path::PathBuf {
-    let manifest = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let default = std::path::PathBuf::from(".");
-    let root = manifest
-        .parent()
-        .and_then(|p| p.parent())
-        .unwrap_or(&default);
-    root.join(name)
 }
 
 fn read_line(prompt: &str) -> anyhow::Result<String> {
@@ -311,8 +301,11 @@ async fn main() -> anyhow::Result<()> {
     let path = tdjson_path()?;
     let td = TdClient::start(&path)?;
 
-    let td_dir = workspace_dir(".tdlib");
-    let files_dir = workspace_dir(".tdlib-files");
+    let Some(root) = common::workspace_root() else {
+        anyhow::bail!("cannot determine workspace root");
+    };
+    let td_dir = root.join(".tdlib");
+    let files_dir = root.join(".tdlib-files");
     std::fs::create_dir_all(&td_dir)?;
     std::fs::create_dir_all(&files_dir)?;
 
