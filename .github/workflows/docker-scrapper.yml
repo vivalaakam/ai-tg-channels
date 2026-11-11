@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compute image name
-        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}/scrapper" >> "$GITHUB_ENV"
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}/ai-tg-channels-scrapper" >> "$GITHUB_ENV"
 
       - name: Compute next version
         id: version
